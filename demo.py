@@ -26,7 +26,7 @@ def load_image(imfile):
 def viz(img, flo):
     img = img[0].permute(1,2,0).cpu().numpy()
     flo = flo[0].permute(1,2,0).cpu().numpy()
-    
+
     # map flow to rgb image
     flo = flow_viz.flow_to_image(flo)
     img_flo = np.concatenate([img, flo], axis=0)
@@ -35,8 +35,7 @@ def viz(img, flo):
     # plt.imshow(img_flo / 255.0)
     # plt.show()
 
-    cv2.imshow('image', img_flo[:, :, [2,1,0]]/255.0)
-    cv2.waitKey()
+    cv2.imwrite('output.png', img_flo[:, :, [2,1,0]])
 
 
 def demo(args):
@@ -50,7 +49,7 @@ def demo(args):
     with torch.no_grad():
         images = glob.glob(os.path.join(args.path, '*.png')) + \
                  glob.glob(os.path.join(args.path, '*.jpg'))
-        
+
         images = sorted(images)
         for imfile1, imfile2 in zip(images[:-1], images[1:]):
             image1 = load_image(imfile1)
