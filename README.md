@@ -1,4 +1,5 @@
 # RAFT
+![Docker build](https://github.com/evroon/RAFT/workflows/docker-build/badge.svg)
 This repository contains the source code for our paper:
 
 [RAFT: Recurrent All Pairs Field Transforms for Optical Flow](https://arxiv.org/pdf/2003.12039.pdf)<br/>
